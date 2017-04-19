@@ -10,6 +10,7 @@
     "postbuild": "chmod +x dist/index.js",
     "watch": "yarn run build -- --watch",
     "format": "tsfmt --replace",
+    "verify": "tsfmt --verify && tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged"
   },
@@ -33,6 +34,7 @@
   },
   "homepage": "https://github.com/KingHenne/declare-react-module#readme",
   "devDependencies": {
+    "custom-tslint-formatters": "^2.1.0",
     "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",

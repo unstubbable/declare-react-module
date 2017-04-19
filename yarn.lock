@@ -39,6 +39,10 @@
   dependencies:
     "@types/babel-types" "*"
 
+"@types/chalk@^0.4.31":
+  version "0.4.31"
+  resolved "https://registry.yarnpkg.com/@types/chalk/-/chalk-0.4.31.tgz#a31d74241a6b1edbb973cf36d97a2896834a51f9"
+
 "@types/estree@*":
   version "0.0.35"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.35.tgz#8999974b34028686a8d61a719e61c138d3755107"
@@ -333,6 +337,14 @@ currently-unhandled@^0.4.1:
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
   dependencies:
     array-find-index "^1.0.1"
+
+custom-tslint-formatters@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/custom-tslint-formatters/-/custom-tslint-formatters-2.1.0.tgz#bd5fc3022415720a61f8eeed6322c7a4879ec0be"
+  dependencies:
+    "@types/chalk" "^0.4.31"
+    "@types/node" "^7.0.12"
+    chalk "^1.1.3"
 
 cz-conventional-changelog@^2.0.0:
   version "2.0.0"
