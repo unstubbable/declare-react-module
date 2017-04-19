@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/KingHenne/declare-react-module#readme",
   "devDependencies": {
+    "cz-conventional-changelog": "^2.0.0",
     "ts-config": "^5.0.0",
     "tslint": "^5.1.0",
     "typescript": "^2.2.2",
@@ -48,5 +49,10 @@
     "rollup": "^0.41.6",
     "rollup-plugin-jsx": "^1.0.3",
     "tslib": "^1.6.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
