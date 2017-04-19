@@ -9,7 +9,9 @@
     "build": "tsc --project .",
     "postbuild": "chmod +x dist/index.js",
     "watch": "yarn run build -- --watch",
-    "format": "tsfmt --replace"
+    "format": "tsfmt --replace",
+    "lint-staged": "lint-staged",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,8 @@
   "homepage": "https://github.com/KingHenne/declare-react-module#readme",
   "devDependencies": {
     "cz-conventional-changelog": "^2.0.0",
+    "husky": "^0.13.3",
+    "lint-staged": "^3.4.0",
     "ts-config": "^5.0.0",
     "tslint": "^5.1.0",
     "typescript": "^2.2.2",
@@ -54,5 +58,12 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "{src,typings}/**/*.{ts,tsx}": [
+      "tsfmt --replace",
+      "tslint --config tslint.json --project tsconfig.json --type-check",
+      "git add"
+    ]
   }
 }
