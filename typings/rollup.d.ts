@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@types/acorn/index.d.ts" />
+/// <reference types="acorn" />
 
 declare module 'rollup' {
   export type Format = 'amd' | 'cjs' | 'es' | 'iife' | 'umd';

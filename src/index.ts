@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/// <reference path="../typings/index.d.ts" />
-
 import * as fs from 'fs-promise';
 import * as path from 'path';
 import {generateFromSource} from 'react-to-typescript-definitions';

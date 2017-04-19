@@ -1,3 +1,5 @@
+/// <reference path="../typings/rollup.d.ts" />
+
 import minimatch = require('minimatch');
 import * as path from 'path';
 import {Plugin} from 'rollup';
