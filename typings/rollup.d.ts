@@ -252,5 +252,6 @@ declare module 'rollup' {
     write(options: BundleWriteOptions): Promise<void>;
   }
 
+  // tslint:disable-next-line promise-function-async
   export function rollup(options: RollupOptions): Promise<BundleFactory>;
 }

@@ -14,13 +14,13 @@ import {
 const pkgDir = process.cwd();
 const {name, main} = require(path.join(pkgDir, 'package.json'));
 
-rollup({
+rollup({ // tslint:disable-line no-floating-promises
   entry: path.join(pkgDir, main),
   plugins: [
     replaceWithEmptyModule(['**/*.css']),
     jsx({factory: 'React.createElement'})
   ]
-}).then(bundle => {
+}).then(async bundle => {
   const {code} = bundle.generate();
   const typings = generateFromSource(name, code);
 
