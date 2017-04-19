@@ -122,7 +122,7 @@ declare module 'rollup' {
      * Same as options.context, but per-module – can either be an object
      * of `id: context` pairs, or an `id => context` function.
      */
-     // tslint:disable-next-line no-any
+    // tslint:disable-next-line no-any
     moduleContext?: {[id: string]: any} | ((id: string) => any);
     /**
      * Adds support for very old environments like IE8, at the cost of

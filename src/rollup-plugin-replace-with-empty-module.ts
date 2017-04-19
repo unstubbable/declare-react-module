@@ -1,6 +1,6 @@
 import minimatch = require('minimatch');
 import * as path from 'path';
-import { Plugin } from 'rollup';
+import {Plugin} from 'rollup';
 
 const emptyModule = 'export default {}';
 const emptyModuleName = '\0empty_module';
