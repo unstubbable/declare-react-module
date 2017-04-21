@@ -2,6 +2,7 @@
   "tslint.configFile": "./tslint.json",
   "tslint.enable": true,
   "tslint.ignoreDefinitionFiles": false,
+  "tslint.exclude": "**/node_modules/**",
   "typescript.format.enable": true,
   "typescript.format.insertSpaceAfterCommaDelimiter": true,
   "typescript.format.insertSpaceAfterSemicolonInForStatements": true,
