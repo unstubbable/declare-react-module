@@ -4,6 +4,10 @@
   "description": "Create TypeScript declaration files for React modules written in ES6.",
   "main": "dist/index.js",
   "bin": "dist/index.js",
+  "files": [
+    "dist",
+    "typings"
+  ],
   "scripts": {
     "test": "jest",
     "prebuild": "rimraf dist",
