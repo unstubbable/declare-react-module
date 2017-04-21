@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "build": "tsc --project .",
     "postbuild": "chmod +x dist/index.js",
-    "watch": "yarn run build -- --watch",
+    "watch": "yarn run build && tsc --project . --watch",
     "format": "tsfmt --replace",
     "verify": "tsfmt --verify && tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",

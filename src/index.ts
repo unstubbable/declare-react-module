@@ -2,29 +2,20 @@
 
 import * as fs from 'fs-promise';
 import * as path from 'path';
-import {generateFromSource} from 'react-to-typescript-definitions';
-import {rollup} from 'rollup';
-import jsx = require('rollup-plugin-jsx');
-import {
-  replaceWithEmptyModule
-} from './rollup-plugin-replace-with-empty-module';
+import {generateTypings} from './generate';
 
 const pkgDir = process.cwd();
 const {name, main} = require(path.join(pkgDir, 'package.json'));
+const entry = path.join(pkgDir, main);
 
-rollup({ // tslint:disable-line no-floating-promises
-  entry: path.join(pkgDir, main),
-  plugins: [
-    replaceWithEmptyModule(['**/*.css']),
-    jsx({factory: 'React.createElement'})
-  ]
-}).then(async bundle => {
-  const {code} = bundle.generate();
-  const typings = generateFromSource(name, code);
-
-  return fs.writeFile(path.join(pkgDir, 'index.d.ts'), typings);
+// tslint:disable-next-line no-floating-promises
+generateTypings(name, entry).then(async typings => {
+  const typingsFilename = path.join(pkgDir, 'index.d.ts');
+  return fs.writeFile(typingsFilename, typings);
 }).catch(reason => {
-  console.log('Error while generating declaration file for ', name);
-  console.log(reason);
+  console.log(
+    `Error while generating declaration file for ${name}.`,
+    reason.message
+  );
   process.exit(1);
 });
