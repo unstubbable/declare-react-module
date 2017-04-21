@@ -1,6 +1,6 @@
 {
   "name": "declare-react-module",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Create TypeScript declaration files for React modules written in ES6.",
   "main": "dist/index.js",
   "bin": "dist/index.js",
@@ -13,11 +13,12 @@
     "format": "tsfmt --replace",
     "verify": "tsfmt --verify && tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KingHenne/declare-react-module.git"
+    "url": "https://github.com/KingHenne/declare-react-module.git"
   },
   "keywords": [
     "typescript",
@@ -41,6 +42,7 @@
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
     "rimraf": "^2.6.1",
+    "semantic-release": "^6.3.2",
     "ts-config": "^5.0.0",
     "ts-jest": "^19.0.10",
     "tslint": "^5.1.0",

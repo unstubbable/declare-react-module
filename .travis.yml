@@ -1,8 +1,15 @@
 language: node_js
 node_js:
-  - "7"
-  - "6"
+  - '7'
+  - '6'
+notifications:
+  email: false
 script:
   - yarn run verify
   - yarn test
 cache: yarn
+after_success:
+  - yarn run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
