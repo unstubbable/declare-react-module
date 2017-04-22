@@ -1,6 +1,7 @@
 import {generateFromSource} from 'react-to-typescript-definitions';
 import {rollup} from 'rollup';
 import jsx = require('rollup-plugin-jsx');
+import resolve = require('rollup-plugin-node-resolve');
 import {
   replaceWithEmptyModule
 } from './rollup-plugin-replace-with-empty-module';
@@ -10,6 +11,9 @@ async function generateBundleCode(entry: string): Promise<string> {
     entry,
     plugins: [
       replaceWithEmptyModule(['**/*.css']),
+      resolve({
+        extensions: ['.js', '.jsx']
+      }),
       jsx({factory: 'React.createElement'})
     ]
   });

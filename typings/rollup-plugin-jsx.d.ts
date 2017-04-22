@@ -1,5 +1,3 @@
-// tslint:disable no-default-export
-
 /// <reference path="../typings/rollup.d.ts" />
 
 declare module 'rollup-plugin-jsx' {
