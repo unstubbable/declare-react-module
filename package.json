@@ -41,6 +41,7 @@
   "homepage": "https://github.com/KingHenne/declare-react-module#readme",
   "devDependencies": {
     "@types/jest": "^19.2.2",
+    "codecov": "^2.1.0",
     "custom-tslint-formatters": "^2.1.0",
     "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.13.3",

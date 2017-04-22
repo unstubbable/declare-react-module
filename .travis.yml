@@ -7,6 +7,7 @@ notifications:
 script:
   - yarn run verify
   - yarn test
+  - codecov
 cache: yarn
 after_success:
   - yarn run semantic-release
