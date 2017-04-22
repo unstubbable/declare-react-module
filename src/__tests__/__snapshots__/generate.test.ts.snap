@@ -25,3 +25,16 @@ exports[`generates typings for module export-from-jsx 1`] = `
 
 "
 `;
+
+exports[`generates typings for module with-css-modules 1`] = `
+"declare module 'with-css-modules' {
+    export interface ComponentProps {
+        foo: string;
+    }
+
+    export function Component(props: ComponentProps): JSX.Element;
+
+}
+
+"
+`;
