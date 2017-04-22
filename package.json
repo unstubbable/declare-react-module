@@ -3,8 +3,9 @@
   "version": "0.0.0-development",
   "description": "Create TypeScript declaration files for React modules written in ES6.",
   "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "bin": "cli.js",
   "files": [
+    "cli.js",
     "dist",
     "typings"
   ],
@@ -12,8 +13,7 @@
     "test": "jest",
     "prebuild": "rimraf dist",
     "build": "tsc --project .",
-    "postbuild": "chmod +x dist/index.js",
-    "watch": "yarn run build && tsc --project . --watch",
+    "watch": "yarn run build -- --watch",
     "format": "tsfmt --replace",
     "verify": "tsfmt --verify && tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
