@@ -91,6 +91,10 @@
       "ts",
       "tsx",
       "js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
     ]
   }
 }
