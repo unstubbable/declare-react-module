@@ -38,3 +38,22 @@ exports[`generates typings for module with-css-modules 1`] = `
 
 "
 `;
+
+exports[`generates typings for module with-dependency 1`] = `
+"declare module 'with-dependency' {
+    export interface TestDependencyProps {
+        foo: string;
+    }
+
+    export function TestDependency(props: TestDependencyProps): JSX.Element;
+
+    export interface ComponentProps {
+        foo: string;
+    }
+
+    export default function Component(props: ComponentProps): JSX.Element;
+
+}
+
+"
+`;
