@@ -11,9 +11,9 @@ function getMatchableImportee(importee: string): string {
   return importee.startsWith('.') ? path.resolve(importee) : importee;
 }
 
-function matches(importee: string, patterns: string[]): boolean {
+export function matches(importee: string, patterns: string[]): boolean {
   return patterns.some(pattern => (
-    minimatch(getMatchableImportee(importee), pattern)
+    minimatch(getMatchableImportee(importee), pattern, {dot: true})
   ));
 }
 
