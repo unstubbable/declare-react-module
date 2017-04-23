@@ -42,8 +42,9 @@
   "devDependencies": {
     "@types/jest": "^19.2.2",
     "codecov": "^2.1.0",
+    "commitizen": "^2.9.6",
     "custom-tslint-formatters": "^2.1.0",
-    "cz-conventional-changelog": "^2.0.0",
+    "cz-customizable": "^5.0.0",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
     "rimraf": "^2.6.1",
@@ -72,7 +73,10 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.js"
     }
   },
   "lint-staged": {
