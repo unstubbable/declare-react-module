@@ -12,6 +12,7 @@ export interface BundleOptions {
 }
 
 const defaultBundleOptions = {
+  external: ['react'],
   replaceWithEmptyModulePatterns: ['**/*.css']
 };
 
