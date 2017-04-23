@@ -6,8 +6,13 @@ module.exports = function (wallaby) {
       type: 'node'
     },
     files: [
-      'src/**/*.{js,jsx,ts,tsx}',
-      '!**/__tests__/**/*.test.{ts,tsx}',
+      'src/**/*.{ts,tsx}',
+      '!src/**/__tests__/**/*.test.{ts,tsx}',
+      {
+        pattern: 'src/**/__tests__/**/*.{js,jsx}',
+        load: false,
+        instrument: false
+      },
       'tsconfig.json',
       'node_modules/ts-config/tsconfig.json'
     ],
