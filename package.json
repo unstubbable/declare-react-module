@@ -19,6 +19,7 @@
     "verify": "tsfmt --verify && tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
+    "prepublish": "yarn run build",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
