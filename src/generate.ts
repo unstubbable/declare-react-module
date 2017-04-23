@@ -6,24 +6,39 @@ import {
   replaceWithEmptyModule
 } from './rollup-plugin-replace-with-empty-module';
 
-async function generateBundleCode(entry: string): Promise<string> {
+export interface BundleOptions {
+  external?: ((id: string) => boolean) | string[];
+  replaceWithEmptyModulePatterns?: string[];
+}
+
+const defaultBundleOptions = {
+  replaceWithEmptyModulePatterns: ['**/*.css']
+};
+
+async function generateBundleCode(
+  entry: string,
+  options?: BundleOptions
+): Promise<string> {
+  options = {...defaultBundleOptions, ...options};
+
   const bundle = await rollup({
     entry,
+    external: options.external,
     plugins: [
-      replaceWithEmptyModule(['**/*.css']),
-      resolve({
-        extensions: ['.js', '.jsx']
-      }),
+      replaceWithEmptyModule(options.replaceWithEmptyModulePatterns),
+      resolve({extensions: ['.js', '.jsx']}),
       jsx({factory: 'React.createElement'})
     ]
   });
+
   return bundle.generate({format: 'es'}).code;
 }
 
 export async function generateTypings(
   moduleName: string,
-  entry: string
+  entry: string,
+  options?: BundleOptions
 ): Promise<string> {
-  const code = await generateBundleCode(entry);
+  const code = await generateBundleCode(entry, options);
   return generateFromSource(moduleName, code);
 }

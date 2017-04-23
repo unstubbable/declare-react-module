@@ -17,7 +17,7 @@ export function matches(importee: string, patterns: string[]): boolean {
   ));
 }
 
-export function replaceWithEmptyModule(patterns: string[]): Plugin {
+export function replaceWithEmptyModule(patterns: string[] = []): Plugin {
   return {
     resolveId(importee: string): string | null {
       return matches(importee, patterns) ? emptyModuleName : null;
