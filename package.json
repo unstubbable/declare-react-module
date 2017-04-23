@@ -10,7 +10,8 @@
     "typings"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
     "prebuild": "rimraf dist",
     "build": "tsc --project .",
     "watch": "yarn run build -- --watch",
@@ -97,7 +98,6 @@
       "tsx",
       "js"
     ],
-    "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}"
     ]
