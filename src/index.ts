@@ -2,7 +2,7 @@ import * as fs from 'fs-promise';
 import * as path from 'path';
 import {generateTypings} from './generate';
 
-export async function writeDeclarationFile(pkgDir: string): Promise<void> {
+async function writeDeclarationFile(pkgDir: string): Promise<void> {
   const {name, main} = require(path.join(pkgDir, 'package.json'));
   const entry = path.join(pkgDir, main);
 
@@ -14,15 +14,14 @@ export async function writeDeclarationFile(pkgDir: string): Promise<void> {
 
 export async function cli(pkgDir: string = process.cwd()): Promise<void> {
   try {
-    if (!path.isAbsolute(pkgDir)) {
-      pkgDir = path.resolve(process.cwd(), pkgDir);
-    }
-    await writeDeclarationFile(pkgDir);
+    const dirname = path.isAbsolute(pkgDir)
+      ? pkgDir
+      : path.resolve(process.cwd(), pkgDir);
+    await writeDeclarationFile(dirname);
   } catch (error) {
-    console.log(
-      `Error while generating declaration file for ${pkgDir}.`,
-      error.message
-    );
-    process.exit(1);
+    throw new Error(`
+Cannot generate declaration file for "${pkgDir}".
+Reason: ${error.message}
+    `);
   }
 }
