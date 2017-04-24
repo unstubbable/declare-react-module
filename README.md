@@ -2,6 +2,7 @@
 
 [![npm][npm-badge]][npm]
 [![build][travis-ci-badge]][travis-ci]
+[![codecov](https://codecov.io/gh/KingHenne/declare-react-module/branch/master/graph/badge.svg)](https://codecov.io/gh/KingHenne/declare-react-module)
 [![semantic-release][semantic-release-badge]][semantic-release]
 
 Create TypeScript declaration files for React modules written in ES6.
