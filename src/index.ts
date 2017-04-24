@@ -14,6 +14,9 @@ export async function writeDeclarationFile(pkgDir: string): Promise<void> {
 
 export async function cli(pkgDir: string = process.cwd()): Promise<void> {
   try {
+    if (!path.isAbsolute(pkgDir)) {
+      pkgDir = path.resolve(process.cwd(), pkgDir);
+    }
     await writeDeclarationFile(pkgDir);
   } catch (error) {
     console.log(
