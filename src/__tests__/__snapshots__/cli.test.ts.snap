@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cli() with a relative package dir writes a declaration file to the given package dir 1`] = `
+"declare module 'export-from-js' {
+    export interface ComponentProps {
+        foo: string;
+    }
+
+    export function Component(props: ComponentProps): JSX.Element;
+
+}
+
+"
+`;
+
+exports[`cli() with an absolute package dir writes a declaration file to the given package dir 1`] = `
+"declare module 'export-from-js' {
+    export interface ComponentProps {
+        foo: string;
+    }
+
+    export function Component(props: ComponentProps): JSX.Element;
+
+}
+
+"
+`;

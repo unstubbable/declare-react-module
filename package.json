@@ -16,7 +16,7 @@
     "build": "tsc --project .",
     "watch": "yarn run build -- --watch",
     "format": "tsfmt --replace",
-    "verify": "tsfmt --verify && tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped \"{src,typings}/**/*.{ts,tsx}\"",
+    "verify": "tsfmt --verify && tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped --exclude \"src/__tests__/__fixtures__/**\" \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
     "prepublish": "yarn run build",
@@ -66,6 +66,7 @@
     "@types/resolve": "^0.0.4",
     "fs-promise": "^2.0.2",
     "jest": "next",
+    "meow": "^3.7.0",
     "minimatch": "^3.0.3",
     "react-to-typescript-definitions": "^0.22.0",
     "rollup": "^0.41.6",
@@ -98,6 +99,9 @@
       "ts",
       "tsx",
       "js"
+    ],
+    "modulePathIgnorePatterns": [
+      "/__tests__/__fixtures__/.*index\\.d\\.ts$"
     ],
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}"
