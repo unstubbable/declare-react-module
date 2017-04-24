@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`writeDeclarationFile() writes a declaration file to the given package dir 1`] = `
+"declare module 'export-from-js' {
+    export interface ComponentProps {
+        foo: string;
+    }
+
+    export function Component(props: ComponentProps): JSX.Element;
+
+}
+
+"
+`;

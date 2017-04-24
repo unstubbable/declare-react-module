@@ -9,7 +9,7 @@ module.exports = function (wallaby) {
       'src/**/*.{ts,tsx}',
       '!src/**/__tests__/**/*.test.{ts,tsx}',
       {
-        pattern: 'src/**/__tests__/**/*.{js,jsx}',
+        pattern: 'src/**/__tests__/**/*.{js,jsx,json}',
         load: false,
         instrument: false
       },

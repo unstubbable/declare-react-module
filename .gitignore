@@ -1,3 +1,4 @@
 /node_modules
 dist
 coverage
+**/__fixtures__/**/index.d.ts
