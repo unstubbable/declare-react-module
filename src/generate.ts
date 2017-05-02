@@ -1,5 +1,6 @@
 import {generateFromSource} from 'react-to-typescript-definitions';
 import {rollup} from 'rollup';
+import commonjs = require('rollup-plugin-commonjs');
 import jsx = require('rollup-plugin-jsx');
 import resolve = require('rollup-plugin-node-resolve');
 import {
@@ -28,6 +29,7 @@ async function generateBundleCode(
     plugins: [
       replaceWithEmptyModule(options.replaceWithEmptyModulePatterns),
       resolve({extensions: ['.js', '.jsx']}),
+      commonjs(),
       jsx({factory: 'React.createElement'})
     ]
   });
