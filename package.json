@@ -15,8 +15,13 @@
     "prebuild": "rimraf dist",
     "build": "tsc --project .",
     "watch": "yarn run build -- --watch",
-    "format": "tsfmt --replace",
-    "verify": "tsfmt --verify && tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped --exclude \"src/__tests__/__fixtures__/**\" \"{src,typings}/**/*.{ts,tsx}\"",
+    "format": "run-p format:*",
+    "format:js": "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser babylon --write 'src/**/*.{js,jsx}'",
+    "format:ts": "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser typescript --write '{src,typings}/**/*.{ts,tsx}'",
+    "verify": "run-p verify:**",
+    "verify:format:js": "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser babylon --list-different 'src/**/*.{js,jsx}'",
+    "verify:format:ts": "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser typescript --list-different '{src,typings}/**/*.{ts,tsx}'",
+    "verify:tslint": "tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped --exclude \"src/__tests__/__fixtures__/**\" \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
     "prepublish": "yarn run build",
@@ -49,13 +54,14 @@
     "cz-customizable": "^5.0.0",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
+    "npm-run-all": "^4.0.2",
+    "prettier": "^1.5.2",
     "rimraf": "^2.6.1",
     "semantic-release": "^6.3.2",
     "ts-config": "^5.0.0",
     "ts-jest": "^19.0.10",
     "tslint": "^5.1.0",
-    "typescript": "^2.2.2",
-    "typescript-formatter": "^5.1.3"
+    "typescript": "^2.2.2"
   },
   "dependencies": {
     "@types/acorn": "^4.0.2",
@@ -85,8 +91,12 @@
   },
   "lint-staged": {
     "{src,typings}/**/*.{ts,tsx}": [
-      "tsfmt --replace",
-      "tslint --config tslint.json --project tsconfig.json --type-check",
+      "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser typescript --write",
+      "git add",
+      "tslint --config tslint.json --project tsconfig.json --type-check"
+    ],
+    "src/**/*.{js,jsx}": [
+      "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser babylon --write",
       "git add"
     ]
   },
