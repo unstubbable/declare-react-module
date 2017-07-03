@@ -3,6 +3,8 @@
   "rules": {
     "no-reference": false,
     "no-var-requires": false,
-    "newline-before-return": false
+    "newline-before-return": false,
+    "trailing-comma": [false],
+    "max-line-length":[false]
   }
 }
