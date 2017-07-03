@@ -53,15 +53,16 @@
     "custom-tslint-formatters": "^2.1.0",
     "cz-customizable": "^5.0.0",
     "husky": "^0.13.3",
+    "jest": "^20.0.4",
     "lint-staged": "^3.4.0",
     "npm-run-all": "^4.0.2",
     "prettier": "^1.5.2",
     "rimraf": "^2.6.1",
     "semantic-release": "^6.3.2",
-    "ts-config": "^5.0.0",
-    "ts-jest": "^19.0.10",
-    "tslint": "^5.1.0",
-    "typescript": "^2.2.2"
+    "ts-config": "^9.4.0",
+    "ts-jest": "^20.0.6",
+    "tslint": "^5.4.3",
+    "typescript": "^2.4.1"
   },
   "dependencies": {
     "@types/acorn": "^4.0.2",
@@ -71,7 +72,6 @@
     "@types/node": "^7.0.12",
     "@types/resolve": "^0.0.4",
     "fs-promise": "^2.0.2",
-    "jest": "next",
     "meow": "^3.7.0",
     "minimatch": "^3.0.3",
     "react-to-typescript-definitions": "^0.22.0",
@@ -79,7 +79,7 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-jsx": "^1.0.3",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "tslib": "^1.6.0"
+    "tslib": "^1.7.1"
   },
   "config": {
     "commitizen": {
@@ -104,7 +104,6 @@
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
     "testRegex": "/__tests__/.*\\.test\\.(ts|tsx)$",
     "moduleFileExtensions": [
       "ts",
@@ -114,6 +113,7 @@
     "modulePathIgnorePatterns": [
       "/__tests__/__fixtures__/.*index\\.d\\.ts$"
     ],
+    "mapCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}"
     ]
