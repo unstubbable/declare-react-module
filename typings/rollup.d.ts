@@ -46,8 +46,10 @@ declare module 'rollup' {
     /**
      * A bundle transformer function.
      */
-    transformBundle?(source: string, options: {format: Format}):
-      string | Bundle;
+    transformBundle?(
+      source: string,
+      options: {format: Format}
+    ): string | Bundle;
     /**
      * Function hook called when `bundle.generate()` is being executed.
      */

@@ -2,7 +2,8 @@ import * as fs from 'fs-promise';
 import * as path from 'path';
 
 function getDirectories(dirname: string): string[] {
-  return fs.readdirSync(dirname)
+  return fs
+    .readdirSync(dirname)
     .filter(file => fs.statSync(path.join(dirname, file)).isDirectory());
 }
 
@@ -16,6 +17,6 @@ export function getModules(): TestModule[] {
 
   return getDirectories(fixturesDirname).map(moduleName => ({
     name: moduleName,
-    entry: path.join(fixturesDirname, moduleName, 'index.js')
+    entry: path.join(fixturesDirname, moduleName, 'index.js'),
   }));
 }

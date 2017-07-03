@@ -12,9 +12,9 @@ function getMatchableImportee(importee: string): string {
 }
 
 export function matches(importee: string, patterns: string[]): boolean {
-  return patterns.some(pattern => (
+  return patterns.some(pattern =>
     minimatch(getMatchableImportee(importee), pattern, {dot: true})
-  ));
+  );
 }
 
 export function replaceWithEmptyModule(patterns: string[] = []): Plugin {
@@ -24,6 +24,6 @@ export function replaceWithEmptyModule(patterns: string[] = []): Plugin {
     },
     load(id: string): string | null {
       return id === emptyModuleName ? emptyModule : null;
-    }
+    },
   };
 }

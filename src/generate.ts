@@ -3,9 +3,7 @@ import {rollup} from 'rollup';
 import commonjs = require('rollup-plugin-commonjs');
 import jsx = require('rollup-plugin-jsx');
 import resolve = require('rollup-plugin-node-resolve');
-import {
-  replaceWithEmptyModule
-} from './rollup-plugin-replace-with-empty-module';
+import {replaceWithEmptyModule} from './rollup-plugin-replace-with-empty-module';
 
 export interface BundleOptions {
   external?: ((id: string) => boolean) | string[];
@@ -14,7 +12,7 @@ export interface BundleOptions {
 
 const defaultBundleOptions = {
   external: ['react'],
-  replaceWithEmptyModulePatterns: ['**/*.css']
+  replaceWithEmptyModulePatterns: ['**/*.css'],
 };
 
 async function generateBundleCode(
@@ -30,8 +28,8 @@ async function generateBundleCode(
       replaceWithEmptyModule(options.replaceWithEmptyModulePatterns),
       resolve({extensions: ['.js', '.jsx']}),
       commonjs(),
-      jsx({factory: 'React.createElement'})
-    ]
+      jsx({factory: 'React.createElement'}),
+    ],
   });
 
   return bundle.generate({format: 'es'}).code;
