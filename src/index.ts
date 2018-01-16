@@ -1,4 +1,4 @@
-import * as fs from 'fs-promise';
+import * as fs from 'fs-extra';
 import * as path from 'path';
 import {generateTypings} from './generate';
 
@@ -19,9 +19,11 @@ export async function cli(pkgDir: string = process.cwd()): Promise<void> {
       : path.resolve(process.cwd(), pkgDir);
     await writeDeclarationFile(dirname);
   } catch (error) {
-    throw new Error(`
-Cannot generate declaration file for "${pkgDir}".
-Reason: ${error.message}
-    `);
+    console.error(`Cannot generate declaration file for "${pkgDir}".`);
+    console.error(`Reason: ${error.message}`);
+    if (error.codeFrame) {
+      console.error(error.codeFrame);
+    }
+    process.exit(1);
   }
 }

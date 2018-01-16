@@ -1,5 +1,3 @@
-/// <reference path="../typings/rollup.d.ts" />
-
 import minimatch = require('minimatch');
 import * as path from 'path';
 import {Plugin} from 'rollup';
@@ -19,11 +17,12 @@ export function matches(importee: string, patterns: string[]): boolean {
 
 export function replaceWithEmptyModule(patterns: string[] = []): Plugin {
   return {
-    resolveId(importee: string): string | null {
-      return matches(importee, patterns) ? emptyModuleName : null;
+    name: 'replace-with-empty-module',
+    async resolveId(importee: string): Promise<string | undefined> {
+      return matches(importee, patterns) ? emptyModuleName : undefined;
     },
-    load(id: string): string | null {
-      return id === emptyModuleName ? emptyModule : null;
+    async load(id: string): Promise<string | undefined> {
+      return id === emptyModuleName ? emptyModule : undefined;
     },
   };
 }

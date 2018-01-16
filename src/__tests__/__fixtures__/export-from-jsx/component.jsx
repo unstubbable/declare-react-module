@@ -1,11 +1,7 @@
 import * as React from 'react';
 
 export function Component({foo}) {
-  return (
-    <div>
-      {foo}
-    </div>
-  );
+  return <div>{foo}</div>;
 }
 
 Component.propTypes = {

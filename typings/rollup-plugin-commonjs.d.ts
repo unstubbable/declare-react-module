@@ -1,4 +1,4 @@
-/// <reference path="../typings/rollup.d.ts" />
+/// <reference types="rollup" />
 
 declare module 'rollup-plugin-commonjs' {
   import {Plugin} from 'rollup';

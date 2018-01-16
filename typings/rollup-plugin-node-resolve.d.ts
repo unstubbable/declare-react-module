@@ -1,4 +1,4 @@
-/// <reference path="../typings/rollup.d.ts" />
+/// <reference types="rollup" />
 
 declare module 'rollup-plugin-node-resolve' {
   import {Opts as NodeResolveOptions} from 'resolve';
