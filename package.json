@@ -21,7 +21,7 @@
     "verify": "run-p verify:**",
     "verify:format:js": "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser babylon --list-different 'src/**/*.{js,jsx}'",
     "verify:format:ts": "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser typescript --list-different '{src,typings}/**/*.{ts,tsx}'",
-    "verify:tslint": "tslint --config tslint.json --project tsconfig.json --type-check --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped --exclude \"src/__tests__/__fixtures__/**\" \"{src,typings}/**/*.{ts,tsx}\"",
+    "verify:tslint": "tslint --config tslint.json --project tsconfig.json --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped --exclude \"src/__tests__/__fixtures__/**\" \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
     "prepublish": "yarn run build",
@@ -47,39 +47,48 @@
   },
   "homepage": "https://github.com/KingHenne/declare-react-module#readme",
   "devDependencies": {
-    "@types/jest": "^19.2.2",
-    "codecov": "^2.1.0",
+    "@types/chokidar": "^1.7.4",
+    "@types/jest": "^22.0.1",
+    "@types/strip-ansi": "^3.0.0",
+    "codecov": "^3.0.0",
     "commitizen": "^2.9.6",
-    "custom-tslint-formatters": "^2.1.0",
-    "cz-customizable": "^5.0.0",
-    "husky": "^0.13.3",
-    "jest": "^20.0.4",
-    "lint-staged": "^3.4.0",
-    "npm-run-all": "^4.0.2",
-    "prettier": "^1.5.2",
-    "rimraf": "^2.6.1",
-    "semantic-release": "^6.3.2",
-    "ts-config": "^9.4.0",
-    "ts-jest": "^20.0.6",
-    "tslint": "^5.4.3",
-    "typescript": "^2.4.1"
+    "custom-tslint-formatters": "^2.1.1",
+    "cz-customizable": "^5.2.0",
+    "husky": "^0.14.3",
+    "jest": "^22.1.1",
+    "lint-staged": "^6.0.0",
+    "magic-string": "^0.22.4",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2",
+    "rimraf": "^2.6.2",
+    "semantic-release": "^12.2.2",
+    "source-map": "^0.6.1",
+    "strip-ansi": "^4.0.0",
+    "ts-config": "^15.0.0",
+    "ts-jest": "^22.0.1",
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2"
   },
   "dependencies": {
-    "@types/acorn": "^4.0.2",
-    "@types/babel-core": "^6.7.14",
-    "@types/fs-promise": "^1.0.2",
-    "@types/minimatch": "^2.0.29",
-    "@types/node": "^7.0.12",
-    "@types/resolve": "^0.0.4",
-    "fs-promise": "^2.0.2",
-    "meow": "^3.7.0",
-    "minimatch": "^3.0.3",
-    "react-to-typescript-definitions": "^0.22.0",
-    "rollup": "^0.41.6",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-jsx": "^1.0.3",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "tslib": "^1.7.1"
+    "@types/acorn": "^4.0.3",
+    "@types/babel-core": "^6.25.3",
+    "@types/fs-extra": "^5.0.0",
+    "@types/minimatch": "^3.0.3",
+    "@types/node": "^9.3.0",
+    "@types/resolve": "^0.0.5",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "fs-extra": "^5.0.0",
+    "meow": "^4.0.0",
+    "minimatch": "^3.0.4",
+    "react-to-typescript-definitions": "^0.25.1",
+    "rollup": "^0.54.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-resolve": "^3.0.2",
+    "tslib": "^1.8.1"
   },
   "config": {
     "commitizen": {
@@ -93,7 +102,7 @@
     "{src,typings}/**/*.{ts,tsx}": [
       "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser typescript --write",
       "git add",
-      "tslint --config tslint.json --project tsconfig.json --type-check"
+      "tslint --config tslint.json --project tsconfig.json"
     ],
     "src/**/*.{js,jsx}": [
       "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser babylon --write",
@@ -108,7 +117,8 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js"
+      "js",
+      "json"
     ],
     "modulePathIgnorePatterns": [
       "/__tests__/__fixtures__/.*index\\.d\\.ts$"
@@ -116,6 +126,7 @@
     "mapCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx}"
-    ]
+    ],
+    "clearMocks": true
   }
 }

@@ -1,7 +1,7 @@
 import {generateFromSource} from 'react-to-typescript-definitions';
 import {rollup} from 'rollup';
+import babel = require('rollup-plugin-babel');
 import commonjs = require('rollup-plugin-commonjs');
-import jsx = require('rollup-plugin-jsx');
 import resolve = require('rollup-plugin-node-resolve');
 import {replaceWithEmptyModule} from './rollup-plugin-replace-with-empty-module';
 
@@ -11,35 +11,45 @@ export interface BundleOptions {
 }
 
 const defaultBundleOptions = {
-  external: ['react'],
+  external: ['react', 'prop-types'],
   replaceWithEmptyModulePatterns: ['**/*.css'],
 };
 
 async function generateBundleCode(
-  entry: string,
+  input: string,
   options?: BundleOptions
 ): Promise<string> {
   options = {...defaultBundleOptions, ...options};
 
   const bundle = await rollup({
-    entry,
+    input,
     external: options.external,
     plugins: [
       replaceWithEmptyModule(options.replaceWithEmptyModulePatterns),
-      resolve({extensions: ['.js', '.jsx']}),
+      resolve({extensions: ['.js', '.jsx'], jsnext: true}),
+      babel({
+        presets: [
+          [
+            require.resolve('babel-preset-env'),
+            {modules: false, targets: {node: '6.5'}},
+          ],
+          require.resolve('babel-preset-react'),
+          require.resolve('babel-preset-stage-2'),
+        ],
+      }),
       commonjs(),
-      jsx({factory: 'React.createElement'}),
     ],
   });
 
-  return bundle.generate({format: 'es'}).code;
+  const {code} = await bundle.generate({format: 'es'});
+  return code;
 }
 
 export async function generateTypings(
   moduleName: string,
-  entry: string,
+  input: string,
   options?: BundleOptions
 ): Promise<string> {
-  const code = await generateBundleCode(entry, options);
+  const code = await generateBundleCode(input, options);
   return generateFromSource(moduleName, code);
 }

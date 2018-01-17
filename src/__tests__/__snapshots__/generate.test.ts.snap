@@ -26,6 +26,24 @@ exports[`generates typings for module export-from-jsx 1`] = `
 "
 `;
 
+exports[`generates typings for module stage-2-syntax 1`] = `
+"declare module 'stage-2-syntax' {
+    import {Component} from 'react';
+
+    export interface MyComponentProps {
+        foo: string;
+    }
+
+    export class MyComponent extends Component<MyComponentProps, any> {
+        render(): JSX.Element;
+
+    }
+
+}
+
+"
+`;
+
 exports[`generates typings for module with-css-modules 1`] = `
 "declare module 'with-css-modules' {
     export interface ComponentProps {

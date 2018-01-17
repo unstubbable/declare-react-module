@@ -1,9 +1,17 @@
 import {generateTypings} from '../generate';
-import {getModules} from './helper';
+import {getInputFileName} from './helper';
 
-getModules().forEach(({name, entry}) => {
+function itGeneratesTypingsForModule(name: string): void {
   it(`generates typings for module ${name}`, async () => {
-    const typings = await generateTypings(name, entry);
+    const input = getInputFileName(name);
+    const typings = await generateTypings(name, input);
     expect(typings).toMatchSnapshot();
   });
-});
+}
+
+itGeneratesTypingsForModule('export-from-js');
+itGeneratesTypingsForModule('export-from-jsx');
+itGeneratesTypingsForModule('stage-2-syntax');
+itGeneratesTypingsForModule('with-css-modules');
+itGeneratesTypingsForModule('with-dependency');
+itGeneratesTypingsForModule('with-es5-dependency');
