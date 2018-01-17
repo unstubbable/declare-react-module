@@ -14,7 +14,7 @@
     "test:watch": "jest --watch",
     "prebuild": "rimraf dist",
     "build": "tsc --project .",
-    "watch": "yarn run build -- --watch",
+    "watch": "yarn build -- --watch",
     "format": "run-p format:*",
     "format:js": "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser babylon --write 'src/**/*.{js,jsx}'",
     "format:ts": "prettier --single-quote --trailing-comma es5 --no-bracket-spacing --parser typescript --write '{src,typings}/**/*.{ts,tsx}'",
@@ -24,8 +24,7 @@
     "verify:tslint": "tslint --config tslint.json --project tsconfig.json --formatters-dir node_modules/custom-tslint-formatters/formatters --format grouped --exclude \"src/__tests__/__fixtures__/**\" \"{src,typings}/**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
-    "prepublish": "yarn run build",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "prepublish": "yarn build"
   },
   "repository": {
     "type": "git",
