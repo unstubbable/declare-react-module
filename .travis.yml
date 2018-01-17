@@ -8,9 +8,8 @@ script:
   - yarn run verify
   - yarn test
   - codecov
+  - yarn semantic-release
 cache: yarn
-after_success:
-  - yarn run semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
