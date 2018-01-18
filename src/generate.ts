@@ -3,6 +3,7 @@ import {rollup} from 'rollup';
 import babel = require('rollup-plugin-babel');
 import commonjs = require('rollup-plugin-commonjs');
 import resolve = require('rollup-plugin-node-resolve');
+import {debug} from './debug';
 import {replaceWithEmptyModule} from './rollup-plugin-replace-with-empty-module';
 
 export interface BundleOptions {
@@ -42,6 +43,8 @@ async function generateBundleCode(
   });
 
   const {code} = await bundle.generate({format: 'es'});
+  debug(code);
+
   return code;
 }
 

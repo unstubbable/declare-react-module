@@ -71,6 +71,7 @@
   "dependencies": {
     "@types/acorn": "^4.0.3",
     "@types/babel-core": "^6.25.3",
+    "@types/debug": "^0.0.30",
     "@types/fs-extra": "^5.0.0",
     "@types/minimatch": "^3.0.3",
     "@types/node": "^9.3.0",
@@ -79,6 +80,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "debug": "^3.1.0",
     "fs-extra": "^5.0.0",
     "meow": "^4.0.0",
     "minimatch": "^3.0.4",
