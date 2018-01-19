@@ -2,6 +2,8 @@
 
 exports[`cli() with a relative package dir writes a declaration file to the given package dir 1`] = `
 "declare module 'export-from-js' {
+    import 'react';
+
     export interface ComponentProps {
         foo: string;
     }
@@ -15,6 +17,8 @@ exports[`cli() with a relative package dir writes a declaration file to the give
 
 exports[`cli() with an absolute package dir writes a declaration file to the given package dir 1`] = `
 "declare module 'export-from-js' {
+    import 'react';
+
     export interface ComponentProps {
         foo: string;
     }

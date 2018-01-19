@@ -2,6 +2,8 @@
 
 exports[`generates typings for module export-from-js 1`] = `
 "declare module 'export-from-js' {
+    import 'react';
+
     export interface ComponentProps {
         foo: string;
     }
@@ -15,6 +17,8 @@ exports[`generates typings for module export-from-js 1`] = `
 
 exports[`generates typings for module export-from-jsx 1`] = `
 "declare module 'export-from-jsx' {
+    import 'react';
+
     export interface ComponentProps {
         foo: string;
     }
@@ -46,6 +50,8 @@ exports[`generates typings for module stage-2-syntax 1`] = `
 
 exports[`generates typings for module with-css-modules 1`] = `
 "declare module 'with-css-modules' {
+    import 'react';
+
     export interface ComponentProps {
         foo: string;
     }
@@ -59,6 +65,8 @@ exports[`generates typings for module with-css-modules 1`] = `
 
 exports[`generates typings for module with-dependency 1`] = `
 "declare module 'with-dependency' {
+    import 'react';
+
     export interface TestDependencyProps {
         foo: string;
     }
@@ -78,6 +86,8 @@ exports[`generates typings for module with-dependency 1`] = `
 
 exports[`generates typings for module with-es5-dependency 1`] = `
 "declare module 'with-es5-dependency' {
+    import 'react';
+
     export interface ComponentProps {
         foo: string;
     }
