@@ -16,3 +16,4 @@ itGeneratesTypingsForModule('with-css-modules');
 itGeneratesTypingsForModule('with-dependency');
 itGeneratesTypingsForModule('with-es5-dependency');
 itGeneratesTypingsForModule('with-json-dependency');
+itGeneratesTypingsForModule('with-node-builtin-dependency');

@@ -1,3 +1,4 @@
+import builtinModules = require('builtin-modules');
 import {generateFromSource} from 'react-to-typescript-definitions';
 import {rollup} from 'rollup';
 import babel = require('rollup-plugin-babel');
@@ -13,7 +14,7 @@ export interface BundleOptions {
 }
 
 const defaultBundleOptions = {
-  external: ['react', 'prop-types'],
+  external: builtinModules.concat(['react', 'prop-types']),
   replaceWithEmptyModulePatterns: ['**/*.css'],
 };
 
@@ -28,7 +29,11 @@ async function generateBundleCode(
     external: options.external,
     plugins: [
       replaceWithEmptyModule(options.replaceWithEmptyModulePatterns),
-      resolve({extensions: ['.js', '.jsx'], jsnext: true}),
+      resolve({
+        extensions: ['.js', '.jsx'],
+        jsnext: true,
+        preferBuiltins: true,
+      }),
       json(),
       babel({
         presets: [
