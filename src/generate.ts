@@ -2,6 +2,7 @@ import {generateFromSource} from 'react-to-typescript-definitions';
 import {rollup} from 'rollup';
 import babel = require('rollup-plugin-babel');
 import commonjs = require('rollup-plugin-commonjs');
+import json = require('rollup-plugin-json');
 import resolve = require('rollup-plugin-node-resolve');
 import {debug} from './debug';
 import {replaceWithEmptyModule} from './rollup-plugin-replace-with-empty-module';
@@ -28,6 +29,7 @@ async function generateBundleCode(
     plugins: [
       replaceWithEmptyModule(options.replaceWithEmptyModulePatterns),
       resolve({extensions: ['.js', '.jsx'], jsnext: true}),
+      json(),
       babel({
         presets: [
           [
