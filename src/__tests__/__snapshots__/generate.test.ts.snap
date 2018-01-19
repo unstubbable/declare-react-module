@@ -98,3 +98,18 @@ exports[`generates typings for module with-es5-dependency 1`] = `
 
 "
 `;
+
+exports[`generates typings for module with-json-dependency 1`] = `
+"declare module 'with-json-dependency' {
+    import 'react';
+
+    export interface ComponentProps {
+        foo: string;
+    }
+
+    export default function Component(props: ComponentProps): JSX.Element;
+
+}
+
+"
+`;
