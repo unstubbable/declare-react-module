@@ -9,7 +9,7 @@ export interface Options extends BundleOptions {
 export async function writeDeclarationFile(
   pkgDir: string,
   {outDir, ...bundleOptions}: Options = {}
-): Promise<void> {
+): Promise<string> {
   const absolutePkgDir = getAbsoluteDirname(pkgDir);
   const {name, main} = require(path.join(absolutePkgDir, 'package.json'));
   const entry = path.resolve(absolutePkgDir, main);
@@ -20,7 +20,9 @@ export async function writeDeclarationFile(
     ? path.join(getAbsoluteDirname(outDir), `${name}.d.ts`)
     : path.join(absolutePkgDir, 'index.d.ts');
 
-  return fs.writeFile(typingsFilename, typings);
+  await fs.writeFile(typingsFilename, typings);
+
+  return typingsFilename;
 }
 
 export async function cli(
