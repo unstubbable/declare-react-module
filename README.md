@@ -21,7 +21,7 @@ Create TypeScript declaration files for React modules written in ES6.
 
     ```json
     {
-      "prepublish": "declare-react-module"
+      "prepublish": "declare-react-module --outDir=./typings"
     }
     ```
 

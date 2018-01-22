@@ -1,4 +1,5 @@
 import * as fs from 'fs-extra';
+import * as os from 'os';
 import * as path from 'path';
 import stripAnsi = require('strip-ansi');
 import {cli} from '../';
@@ -81,6 +82,24 @@ describe('cli()', () => {
   12 | }
   13 | `
       );
+    });
+  });
+
+  describe('with module export-from-js and a custom outDir', () => {
+    beforeEach(() => {
+      pkgDir = getModuleDirname('export-from-js');
+    });
+
+    it('writes the declaration file export-from-js.d.ts into the given directory', async () => {
+      const outDir = await fs.mkdtemp(path.join(os.tmpdir(), 'drm-test-'));
+      const filename = path.join(outDir, 'export-from-js.d.ts');
+
+      await cli(pkgDir, {outDir});
+
+      const fileContents = await fs.readFile(filename);
+      expect(fileContents.toString()).toMatchSnapshot();
+
+      return fs.remove(outDir);
     });
   });
 });
