@@ -1,23 +1,34 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import {generateTypings} from './generate';
+import {BundleOptions, generateTypings} from './generate';
 
-async function writeDeclarationFile(pkgDir: string): Promise<void> {
-  const {name, main} = require(path.join(pkgDir, 'package.json'));
-  const entry = path.join(pkgDir, main);
+export interface Options extends BundleOptions {
+  outDir?: string;
+}
 
-  const typings = await generateTypings(name, entry);
+export async function writeDeclarationFile(
+  pkgDir: string,
+  {outDir, ...bundleOptions}: Options = {}
+): Promise<void> {
+  const absolutePkgDir = getAbsoluteDirname(pkgDir);
+  const {name, main} = require(path.join(absolutePkgDir, 'package.json'));
+  const entry = path.resolve(absolutePkgDir, main);
 
-  const typingsFilename = path.join(pkgDir, 'index.d.ts');
+  const typings = await generateTypings(name, entry, bundleOptions);
+
+  const typingsFilename = outDir
+    ? path.join(getAbsoluteDirname(outDir), `${name}.d.ts`)
+    : path.join(absolutePkgDir, 'index.d.ts');
+
   return fs.writeFile(typingsFilename, typings);
 }
 
-export async function cli(pkgDir: string = process.cwd()): Promise<void> {
+export async function cli(
+  pkgDir: string = process.cwd(),
+  options: Options = {}
+): Promise<void> {
   try {
-    const dirname = path.isAbsolute(pkgDir)
-      ? pkgDir
-      : path.resolve(process.cwd(), pkgDir);
-    await writeDeclarationFile(dirname);
+    await writeDeclarationFile(pkgDir, options);
   } catch (error) {
     console.error(`Cannot generate declaration file for "${pkgDir}".`);
     console.error(`Reason: ${error.message}`);
@@ -26,4 +37,8 @@ export async function cli(pkgDir: string = process.cwd()): Promise<void> {
     }
     process.exit(1);
   }
+}
+
+function getAbsoluteDirname(dirname: string): string {
+  return path.resolve(process.cwd(), dirname);
 }

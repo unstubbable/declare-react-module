@@ -29,3 +29,18 @@ exports[`cli() with an absolute package dir writes a declaration file to the giv
 
 "
 `;
+
+exports[`cli() with module export-from-js and a custom outDir writes the declaration file export-from-js.d.ts into the given directory 1`] = `
+"declare module 'export-from-js' {
+    import 'react';
+
+    export interface ComponentProps {
+        foo: string;
+    }
+
+    export function Component(props: ComponentProps): JSX.Element;
+
+}
+
+"
+`;
