@@ -2,8 +2,60 @@ import * as fs from 'fs-extra';
 import * as os from 'os';
 import * as path from 'path';
 import stripAnsi = require('strip-ansi');
-import {cli} from '../';
+import {cli, writeDeclarationFile} from '../';
 import {getModuleDirname} from './helper';
+
+describe('writeDeclarationFile()', () => {
+  let pkgDir: string;
+
+  const writesDeclarationFile = () => {
+    it('writes a declaration file to the given package dir', async () => {
+      const expectedFilename = path.resolve(pkgDir, 'index.d.ts');
+      await fs.remove(expectedFilename);
+
+      const actualFilename = await writeDeclarationFile(pkgDir);
+      expect(actualFilename).toBe(expectedFilename);
+
+      const fileContents = await fs.readFile(actualFilename);
+      expect(fileContents.toString()).toMatchSnapshot();
+    });
+  };
+
+  describe('with an absolute package dir', () => {
+    beforeEach(() => {
+      pkgDir = getModuleDirname('export-from-js');
+    });
+
+    writesDeclarationFile();
+  });
+
+  describe('with a relative package dir', () => {
+    beforeEach(() => {
+      pkgDir = path.join('src', '__tests__', '__fixtures__', 'export-from-js');
+    });
+
+    writesDeclarationFile();
+  });
+
+  describe('with module export-from-js and a custom outDir', () => {
+    beforeEach(() => {
+      pkgDir = getModuleDirname('export-from-js');
+    });
+
+    it('writes the declaration file export-from-js.d.ts into the given directory', async () => {
+      const outDir = await fs.mkdtemp(path.join(os.tmpdir(), 'drm-test-'));
+      const expectedFilename = path.join(outDir, 'export-from-js.d.ts');
+
+      const actualFilename = await writeDeclarationFile(pkgDir, {outDir});
+      expect(actualFilename).toBe(expectedFilename);
+
+      const fileContents = await fs.readFile(actualFilename);
+      expect(fileContents.toString()).toMatchSnapshot();
+
+      return fs.remove(outDir);
+    });
+  });
+});
 
 describe('cli()', () => {
   let pkgDir: string;
@@ -23,32 +75,15 @@ describe('cli()', () => {
     consoleErrorMock.mockRestore();
   });
 
-  const writesDeclarationFile = () => {
-    it('writes a declaration file to the given package dir', async () => {
-      const filename = path.join(pkgDir, 'index.d.ts');
-      await fs.remove(filename);
-
-      await cli(pkgDir);
-
-      const fileContents = await fs.readFile(filename);
-      expect(fileContents.toString()).toMatchSnapshot();
-    });
-  };
-
-  describe('with an absolute package dir', () => {
+  describe('with a valid module', () => {
     beforeEach(() => {
       pkgDir = getModuleDirname('export-from-js');
     });
 
-    writesDeclarationFile();
-  });
-
-  describe('with a relative package dir', () => {
-    beforeEach(() => {
-      pkgDir = path.join('src', '__tests__', '__fixtures__', 'export-from-js');
+    it('resolves', async () => {
+      const promise = cli(pkgDir);
+      return expect(promise).resolves.toBeUndefined();
     });
-
-    writesDeclarationFile();
   });
 
   describe('when no package.json can be found', () => {
