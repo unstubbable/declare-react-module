@@ -34,7 +34,9 @@ export async function cli(
   } catch (error) {
     console.error(`Cannot generate declaration file for "${pkgDir}".`);
     console.error(`Reason: ${error.message}`);
-    if (error.codeFrame) {
+    if (error.frame) {
+      console.error(error.frame);
+    } else if (error.codeFrame) {
       console.error(error.codeFrame);
     }
     process.exit(1);

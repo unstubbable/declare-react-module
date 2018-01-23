@@ -109,14 +109,21 @@ describe('cli()', () => {
 
       expect(processExitMock).toHaveBeenCalledWith(1);
       expect(consoleErrorMock).toHaveBeenCalledTimes(3);
-      expect(stripAnsi(consoleErrorMock.mock.calls[2][0])).toBe(
-        `   8 | \n   9 |   render() {
-> 10 |     return <div>{this.props.foo,}</div>;
-     |                                 ^
-  11 |   }
-  12 | }
-  13 | `
-      );
+      expect(stripAnsi(consoleErrorMock.mock.calls[2][0])).toMatchSnapshot();
+    });
+  });
+
+  describe('when an import can not be resolved', () => {
+    beforeEach(() => {
+      pkgDir = getModuleDirname('missing-dependency');
+    });
+
+    it('exits and logs an error message with a code frame', async () => {
+      await cli(pkgDir);
+
+      expect(processExitMock).toHaveBeenCalledWith(1);
+      expect(consoleErrorMock).toHaveBeenCalledTimes(3);
+      expect(stripAnsi(consoleErrorMock.mock.calls[2][0])).toMatchSnapshot();
     });
   });
 
