@@ -123,7 +123,7 @@ describe('cli()', () => {
 
       expect(processExitMock).toHaveBeenCalledWith(1);
       expect(consoleErrorMock).toHaveBeenCalledTimes(3);
-      expect(stripAnsi(consoleErrorMock.mock.calls[2][0])).toMatchSnapshot();
+      expect(consoleErrorMock.mock.calls[2][0]).toMatchSnapshot();
     });
   });
 
