@@ -5,7 +5,8 @@
 [![codecov](https://codecov.io/gh/KingHenne/declare-react-module/branch/master/graph/badge.svg)](https://codecov.io/gh/KingHenne/declare-react-module)
 [![semantic-release][semantic-release-badge]][semantic-release]
 
-Create TypeScript declaration files for React modules written in ES6.
+Create TypeScript declaration files for React modules written in
+ES.Next ([stage 2](https://babeljs.io/docs/plugins/preset-stage-2/)).
 
 ## Usage
 

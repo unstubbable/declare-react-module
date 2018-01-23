@@ -1,7 +1,7 @@
 {
   "name": "declare-react-module",
   "version": "0.0.0-development",
-  "description": "Create TypeScript declaration files for React modules written in ES6.",
+  "description": "Create TypeScript declaration files for React modules written in ES.Next.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": "cli.js",
@@ -38,7 +38,8 @@
     "definition",
     "dts",
     "react2dts",
-    "es6"
+    "es6",
+    "esnext"
   ],
   "author": "Hendrik Liebau",
   "license": "MIT",
