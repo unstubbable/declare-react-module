@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`cli() with module export-from-js and a custom outDir writes the declaration file export-from-js.d.ts into the given directory 1`] = `
-"declare module 'export-from-js' {
-    import 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'export-from-js' {
     export interface ComponentProps {
         foo: string;
     }
@@ -16,9 +15,8 @@ exports[`cli() with module export-from-js and a custom outDir writes the declara
 `;
 
 exports[`writeDeclarationFile() with a relative package dir writes a declaration file to the given package dir 1`] = `
-"declare module 'export-from-js' {
-    import 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'export-from-js' {
     export interface ComponentProps {
         foo: string;
     }
@@ -31,9 +29,8 @@ exports[`writeDeclarationFile() with a relative package dir writes a declaration
 `;
 
 exports[`writeDeclarationFile() with an absolute package dir writes a declaration file to the given package dir 1`] = `
-"declare module 'export-from-js' {
-    import 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'export-from-js' {
     export interface ComponentProps {
         foo: string;
     }
@@ -46,9 +43,8 @@ exports[`writeDeclarationFile() with an absolute package dir writes a declaratio
 `;
 
 exports[`writeDeclarationFile() with module export-from-js and a custom outDir writes the declaration file export-from-js.d.ts into the given directory 1`] = `
-"declare module 'export-from-js' {
-    import 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'export-from-js' {
     export interface ComponentProps {
         foo: string;
     }

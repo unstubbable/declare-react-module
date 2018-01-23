@@ -1676,9 +1676,9 @@ dotenv@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
-dts-dom@^0.1.24:
-  version "0.1.24"
-  resolved "https://registry.yarnpkg.com/dts-dom/-/dts-dom-0.1.24.tgz#7dce6cc1a67edc15d9c798f880ff1034fd8c191f"
+dts-dom@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/dts-dom/-/dts-dom-2.0.1.tgz#9167f6e4ceb54b5d0e3b2ce51d494158cd5f1700"
 
 duplexer2@~0.1.0, duplexer2@~0.1.4:
   version "0.1.4"
@@ -4113,15 +4113,15 @@ rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-to-typescript-definitions@^0.26.0:
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/react-to-typescript-definitions/-/react-to-typescript-definitions-0.26.0.tgz#2dd73894b5743f4823fc06d10fc71ead738c20e6"
+react-to-typescript-definitions@^0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/react-to-typescript-definitions/-/react-to-typescript-definitions-0.27.1.tgz#278697a3afd0be8ee9d5be96885c28b53f53a5df"
   dependencies:
     astq "^2.0.3"
     babel-generator "^6.26.0"
     babylon "7.0.0-beta.34"
     chalk "^2.3.0"
-    dts-dom "^0.1.24"
+    dts-dom "^2.0.1"
     get-stdin "^5.0.1"
     meow "^4.0.0"
     pascal-case "2.0.1"
