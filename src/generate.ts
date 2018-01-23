@@ -44,6 +44,8 @@ async function generateBundleCode(
           require.resolve('babel-preset-react'),
           require.resolve('babel-preset-stage-2'),
         ],
+        plugins: ['external-helpers'],
+        externalHelpers: true,
       }),
       commonjs(),
     ],
