@@ -63,5 +63,11 @@ export async function generateTypings(
   options?: BundleOptions
 ): Promise<string> {
   const code = await generateBundleCode(input, options);
-  return generateFromSource(moduleName, code);
+  const typings = generateFromSource(moduleName, code);
+
+  return normalizeLineEndings(typings);
+}
+
+function normalizeLineEndings(text: string): string {
+  return text.replace(/\r\n/g, '\n');
 }

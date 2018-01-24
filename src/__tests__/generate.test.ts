@@ -5,6 +5,8 @@ function itGeneratesTypingsForModule(name: string): void {
   it(`generates typings for module ${name}`, async () => {
     const input = getInputFileName(name);
     const typings = await generateTypings(name, input);
+
+    expect(typings).not.toMatch('\r\n');
     expect(typings).toMatchSnapshot();
   });
 }
