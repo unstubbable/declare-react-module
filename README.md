@@ -22,7 +22,7 @@ ES.Next ([stage 2](https://babeljs.io/docs/plugins/preset-stage-2/)).
 
     ```json
     {
-      "prepublish": "declare-react-module --outDir=./typings"
+      "prepublish": "declare-react-module"
     }
     ```
 
@@ -40,6 +40,8 @@ This will create an `index.d.ts` file in your project root before publishing to 
 
     ```sh
     declare-react-module packages/my-package
+    # or
+    declare-react-module node_modules/some-module --outDir=./typings
     ```
 
 [npm]: https://www.npmjs.com/package/declare-react-module
