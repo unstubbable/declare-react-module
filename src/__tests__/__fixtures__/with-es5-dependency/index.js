@@ -1,8 +1,8 @@
 import * as React from 'react';
-import testDependency from 'test-dependency';
+import {a} from 'test-dependency';
 
 export default function Component({foo}) {
-  return <div className={testDependency(foo)} />;
+  return <div className={foo}>{a}</div>;
 }
 
 Component.propTypes = {
