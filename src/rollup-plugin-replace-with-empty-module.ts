@@ -1,4 +1,4 @@
-import minimatch = require('minimatch');
+import minimatch from 'minimatch';
 import * as path from 'path';
 import {Plugin} from 'rollup';
 

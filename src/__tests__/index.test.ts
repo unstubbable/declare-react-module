@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import * as os from 'os';
 import * as path from 'path';
-import stripAnsi = require('strip-ansi');
+import stripAnsi from 'strip-ansi';
 import {cli, writeDeclarationFile} from '../';
 import {getModuleDirname} from './helper';
 
