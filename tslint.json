@@ -4,7 +4,8 @@
     "no-reference": false,
     "no-var-requires": false,
     "newline-before-return": false,
-    "trailing-comma": [false],
-    "max-line-length":[false]
+    "trailing-comma": false,
+    "max-line-length": false,
+    "match-default-export-name": false
   }
 }

@@ -1,10 +1,10 @@
-import builtinModules = require('builtin-modules');
+import builtinModules from 'builtin-modules';
 import {generateFromSource} from 'react-to-typescript-definitions';
 import {rollup} from 'rollup';
-import babel = require('rollup-plugin-babel');
-import commonjs = require('rollup-plugin-commonjs');
-import json = require('rollup-plugin-json');
-import resolve = require('rollup-plugin-node-resolve');
+import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import json from 'rollup-plugin-json';
+import resolve from 'rollup-plugin-node-resolve';
 import {debug} from './debug';
 import {replaceWithEmptyModule} from './rollup-plugin-replace-with-empty-module';
 
@@ -49,6 +49,7 @@ async function generateBundleCode(
       }),
       commonjs(),
     ],
+    preserveSymlinks: false,
   });
 
   const {code} = await bundle.generate({format: 'es'});
