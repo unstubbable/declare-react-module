@@ -30,13 +30,13 @@ declare module 'export-from-jsx' {
 
 exports[`generates typings for module stage-2-syntax 1`] = `
 "declare module 'stage-2-syntax' {
-    import {Component} from 'react';
+    import {PureComponent} from 'react';
 
     export interface MyComponentProps {
         foo: string;
     }
 
-    export class MyComponent extends Component<MyComponentProps, any> {
+    export class MyComponent extends PureComponent<MyComponentProps, any> {
         render(): JSX.Element;
 
     }
