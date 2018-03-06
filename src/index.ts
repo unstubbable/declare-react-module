@@ -36,8 +36,6 @@ export async function cli(
     console.error(`Reason: ${error.message}`);
     if (error.frame) {
       console.error(error.frame);
-    } else if (error.codeFrame) {
-      console.error(error.codeFrame);
     }
     process.exit(1);
   }
