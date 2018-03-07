@@ -1,14 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`generates typings for module export-from-js 1`] = `
-"declare module 'export-from-js' {
-    import * as React from 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'export-from-js' {
     export interface ComponentProps {
         foo: string;
     }
 
-    export type Component = React.SFC<ComponentProps>;
+    export function Component(props: ComponentProps): JSX.Element;
 
 }
 
@@ -16,14 +15,13 @@ exports[`generates typings for module export-from-js 1`] = `
 `;
 
 exports[`generates typings for module export-from-jsx 1`] = `
-"declare module 'export-from-jsx' {
-    import * as React from 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'export-from-jsx' {
     export interface ComponentProps {
         foo: string;
     }
 
-    export type Component = React.SFC<ComponentProps>;
+    export function Component(props: ComponentProps): JSX.Element;
 
 }
 
@@ -32,13 +30,13 @@ exports[`generates typings for module export-from-jsx 1`] = `
 
 exports[`generates typings for module stage-2-syntax 1`] = `
 "declare module 'stage-2-syntax' {
-    import * as React from 'react';
+    import {PureComponent} from 'react';
 
     export interface MyComponentProps {
         foo: string;
     }
 
-    export class MyComponent extends React.PureComponent<MyComponentProps, any> {
+    export class MyComponent extends PureComponent<MyComponentProps, any> {
         render(): JSX.Element;
 
     }
@@ -49,14 +47,13 @@ exports[`generates typings for module stage-2-syntax 1`] = `
 `;
 
 exports[`generates typings for module with-css-modules 1`] = `
-"declare module 'with-css-modules' {
-    import * as React from 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'with-css-modules' {
     export interface ComponentProps {
         foo: string;
     }
 
-    export type Component = React.SFC<ComponentProps>;
+    export function Component(props: ComponentProps): JSX.Element;
 
 }
 
@@ -64,20 +61,19 @@ exports[`generates typings for module with-css-modules 1`] = `
 `;
 
 exports[`generates typings for module with-dependency 1`] = `
-"declare module 'with-dependency' {
-    import * as React from 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'with-dependency' {
     export interface TestDependencyProps {
         foo: string;
     }
 
-    export type TestDependency = React.SFC<TestDependencyProps>;
+    export function TestDependency(props: TestDependencyProps): JSX.Element;
 
     export interface ComponentProps {
         foo: string;
     }
 
-    export default type Component = React.SFC<ComponentProps>;
+    export default function Component(props: ComponentProps): JSX.Element;
 
 }
 
@@ -85,14 +81,13 @@ exports[`generates typings for module with-dependency 1`] = `
 `;
 
 exports[`generates typings for module with-es5-dependency 1`] = `
-"declare module 'with-es5-dependency' {
-    import * as React from 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'with-es5-dependency' {
     export interface ComponentProps {
         foo: string;
     }
 
-    export default type Component = React.SFC<ComponentProps>;
+    export default function Component(props: ComponentProps): JSX.Element;
 
 }
 
@@ -100,14 +95,13 @@ exports[`generates typings for module with-es5-dependency 1`] = `
 `;
 
 exports[`generates typings for module with-json-dependency 1`] = `
-"declare module 'with-json-dependency' {
-    import * as React from 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'with-json-dependency' {
     export interface ComponentProps {
         foo: string;
     }
 
-    export default type Component = React.SFC<ComponentProps>;
+    export default function Component(props: ComponentProps): JSX.Element;
 
 }
 
@@ -115,14 +109,13 @@ exports[`generates typings for module with-json-dependency 1`] = `
 `;
 
 exports[`generates typings for module with-node-builtin-dependency 1`] = `
-"declare module 'with-node-builtin-dependency' {
-    import * as React from 'react';
-
+"/// <reference types=\\"react\\" />
+declare module 'with-node-builtin-dependency' {
     export interface ComponentProps {
         foo: string;
     }
 
-    export default type Component = React.SFC<ComponentProps>;
+    export default function Component(props: ComponentProps): JSX.Element;
 
 }
 

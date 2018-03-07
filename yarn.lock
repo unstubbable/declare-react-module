@@ -4510,9 +4510,9 @@ rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-to-typescript-definitions@^0.28.1:
-  version "0.28.1"
-  resolved "https://registry.yarnpkg.com/react-to-typescript-definitions/-/react-to-typescript-definitions-0.28.1.tgz#1f51caa6aa61a8fbe9f3b47010ee5034a69ee959"
+react-to-typescript-definitions@0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/react-to-typescript-definitions/-/react-to-typescript-definitions-0.28.0.tgz#2e3fc26d576d6ce6692530c9889169f9c07cc451"
   dependencies:
     astq "^2.0.3"
     babel-generator "^6.26.0"
