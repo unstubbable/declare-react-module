@@ -18,13 +18,14 @@ exports[`cli() when an import can not be resolved exits and logs an error messag
 `;
 
 exports[`cli() with module export-from-js and a custom outDir writes the declaration file export-from-js.d.ts into the given directory 1`] = `
-"/// <reference types=\\"react\\" />
-declare module 'export-from-js' {
+"declare module 'export-from-js' {
+    import * as React from 'react';
+
     export interface ComponentProps {
         foo: string;
     }
 
-    export function Component(props: ComponentProps): JSX.Element;
+    export const Component: React.SFC<ComponentProps>;
 
 }
 
@@ -32,13 +33,14 @@ declare module 'export-from-js' {
 `;
 
 exports[`writeDeclarationFile() with a relative package dir writes a declaration file to the given package dir 1`] = `
-"/// <reference types=\\"react\\" />
-declare module 'export-from-js' {
+"declare module 'export-from-js' {
+    import * as React from 'react';
+
     export interface ComponentProps {
         foo: string;
     }
 
-    export function Component(props: ComponentProps): JSX.Element;
+    export const Component: React.SFC<ComponentProps>;
 
 }
 
@@ -46,13 +48,14 @@ declare module 'export-from-js' {
 `;
 
 exports[`writeDeclarationFile() with an absolute package dir writes a declaration file to the given package dir 1`] = `
-"/// <reference types=\\"react\\" />
-declare module 'export-from-js' {
+"declare module 'export-from-js' {
+    import * as React from 'react';
+
     export interface ComponentProps {
         foo: string;
     }
 
-    export function Component(props: ComponentProps): JSX.Element;
+    export const Component: React.SFC<ComponentProps>;
 
 }
 
@@ -60,13 +63,14 @@ declare module 'export-from-js' {
 `;
 
 exports[`writeDeclarationFile() with module export-from-js and a custom outDir writes the declaration file export-from-js.d.ts into the given directory 1`] = `
-"/// <reference types=\\"react\\" />
-declare module 'export-from-js' {
+"declare module 'export-from-js' {
+    import * as React from 'react';
+
     export interface ComponentProps {
         foo: string;
     }
 
-    export function Component(props: ComponentProps): JSX.Element;
+    export const Component: React.SFC<ComponentProps>;
 
 }
 
