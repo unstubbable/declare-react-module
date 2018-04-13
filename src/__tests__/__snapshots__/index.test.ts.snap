@@ -62,6 +62,21 @@ exports[`writeDeclarationFile() with an absolute package dir writes a declaratio
 "
 `;
 
+exports[`writeDeclarationFile() with module @some-scope/export-from-js and a custom outDir writes the declaration file @some-scope/export-from-js.d.ts into the given directory 1`] = `
+"declare module '@some-scope/export-from-js' {
+    import * as React from 'react';
+
+    export interface ComponentProps {
+        foo: string;
+    }
+
+    export const Component: React.SFC<ComponentProps>;
+
+}
+
+"
+`;
+
 exports[`writeDeclarationFile() with module export-from-js and a custom outDir writes the declaration file export-from-js.d.ts into the given directory 1`] = `
 "declare module 'export-from-js' {
     import * as React from 'react';

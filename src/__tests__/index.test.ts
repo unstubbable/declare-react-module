@@ -55,6 +55,29 @@ describe('writeDeclarationFile()', () => {
       return fs.remove(outDir);
     });
   });
+
+  describe('with module @some-scope/export-from-js and a custom outDir', () => {
+    beforeEach(() => {
+      pkgDir = getModuleDirname('@some-scope/export-from-js');
+    });
+
+    it('writes the declaration file @some-scope/export-from-js.d.ts into the given directory', async () => {
+      const outDir = await fs.mkdtemp(path.join(os.tmpdir(), 'drm-test-'));
+      const expectedFilename = path.join(
+        outDir,
+        '@some-scope',
+        'export-from-js.d.ts'
+      );
+
+      const actualFilename = await writeDeclarationFile(pkgDir, {outDir});
+      expect(actualFilename).toBe(expectedFilename);
+
+      const fileContents = await fs.readFile(actualFilename);
+      expect(fileContents.toString()).toMatchSnapshot();
+
+      return fs.remove(outDir);
+    });
+  });
 });
 
 describe('cli()', () => {
