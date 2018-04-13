@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function (wallaby) {
+module.exports = function(wallaby) {
   return {
     env: {
-      type: 'node'
+      type: 'node',
     },
     files: [
       'src/**/*.{ts,tsx}',
@@ -11,17 +11,15 @@ module.exports = function (wallaby) {
       {
         pattern: 'src/**/__tests__/**/*.{js,jsx,json}',
         load: false,
-        instrument: false
+        instrument: false,
       },
       'tsconfig.json',
-      'node_modules/ts-config/tsconfig.json'
+      'node_modules/ts-config/tsconfig.json',
     ],
     testFramework: 'jest',
-    tests: [
-      '**/__tests__/**/*.test.{ts,tsx}'
-    ],
+    tests: ['src/**/__tests__/**/*.test.{ts,tsx}'],
     delays: {
-      run: 500
-    }
+      run: 500,
+    },
   };
 };

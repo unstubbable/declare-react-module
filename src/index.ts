@@ -20,6 +20,7 @@ export async function writeDeclarationFile(
     ? path.join(getAbsoluteDirname(outDir), `${name}.d.ts`)
     : path.join(absolutePkgDir, 'index.d.ts');
 
+  await fs.mkdirp(path.dirname(typingsFilename));
   await fs.writeFile(typingsFilename, typings);
 
   return typingsFilename;
